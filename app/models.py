@@ -1,3 +1,22 @@
 from django.db import models
 
-# Create your models here.
+class DepartamentModel(models.Model):
+    name = models.CharField(max_length=100)
+    head = models.ForeignKey("DepartamentModel", on_delete=models.SET_NULL, null=True, blank=True)
+
+class PositionModel(models.Model):
+    name = models.CharField(max_length=100)
+    salary = models.IntegerField()
+
+
+class PermissionModel(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=2000)
+    code = models.IntegerField()  # Права в числовом представлении
+
+
+class EmployeeModel(models.Model):
+    name = models.CharField(max_length=100)
+    departament = models.ForeignKey(DepartamentModel, on_delete=models.SET_NULL, null=True, blank=True)
+    position = models.ManyToManyField(PositionModel)
+    permissions = models.ManyToManyField(PermissionModel)

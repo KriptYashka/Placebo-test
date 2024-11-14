@@ -178,7 +178,7 @@ cython_debug/
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea
+
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -197,7 +197,7 @@ cython_debug/
 cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+.idea/
 
 # File-based project format
 *.iws
