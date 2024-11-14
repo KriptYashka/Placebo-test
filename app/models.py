@@ -17,6 +17,7 @@ class PermissionModel(models.Model):
 
 class EmployeeModel(models.Model):
     name = models.CharField(max_length=100)
+    # Примечание: я бы делал CASCADE, но работника ещё уволить надо без департамента и в системе должен находиться
     departament = models.ForeignKey(DepartamentModel, on_delete=models.SET_NULL, null=True, blank=True)
     position = models.ManyToManyField(PositionModel)
     permissions = models.ManyToManyField(PermissionModel)
