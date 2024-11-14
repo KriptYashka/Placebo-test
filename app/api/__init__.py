@@ -1,0 +1,1 @@
+from .api_departament import DepartamentList, DepartamentDetail
