@@ -12,7 +12,6 @@ class PositionSerializer(serializers.ModelSerializer):
         model = PositionModel
         fields = ["id", "name", "salary"]
 
-
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = PermissionModel
@@ -23,3 +22,9 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmployeeModel
         fields = ["id", "name", "departament", "position", "permissions"]
+
+class EmployeeExtendSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    departament = DepartamentSerializer()
+    position = PositionSerializer(many=True)
+    permissions = PermissionSerializer(many=True)
