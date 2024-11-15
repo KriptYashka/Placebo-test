@@ -16,4 +16,8 @@ urlpatterns = [
 
     path('api/employee/', api.EmployeeList.as_view()),
     path('api/employee/<int:pk>', api.EmployeeDetail.as_view()),
+
+    path('api/departament/e/<int:pk>', api.DepartamentEmployeesView.as_view()),
+    path('api/position/info', api.PositionSalaryAvgView.as_view()),
+
 ]

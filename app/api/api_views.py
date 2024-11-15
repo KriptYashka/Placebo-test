@@ -45,6 +45,9 @@ class EmployeeDetail(BaseDetail):
         super().__init__(EmployeeModel, EmployeeSerializer, **kwargs)
 
     def get(self, request: WSGIRequest, pk: int):
+        """
+        Подробная информация о сотрудниках
+        """
         employee = self.get_object(pk)
         serializer = EmployeeExtendSerializer(employee)
         return Response(serializer.data)

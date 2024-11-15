@@ -28,3 +28,7 @@ class EmployeeExtendSerializer(serializers.Serializer):
     departament = DepartamentSerializer()
     position = PositionSerializer(many=True)
     permissions = PermissionSerializer(many=True)
+
+class EmployeeListSerializer(serializers.Serializer):
+    departament = DepartamentSerializer()
+    employees = EmployeeSerializer(many=True)
