@@ -26,6 +26,7 @@ class BaseList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class BaseDetail(APIView):
     def __init__(self, model, serializer, **kwargs):
         super().__init__(**kwargs)
@@ -39,19 +40,19 @@ class BaseDetail(APIView):
             raise Http404
 
     def get(self, request: WSGIRequest, pk: int):
-        departament = self.get_object(pk)
-        serializer = self.serializer(departament)
+        obj = self.get_object(pk)
+        serializer = self.serializer(obj)
         return Response(serializer.data)
 
     def put(self, request: WSGIRequest, pk: int):
-        departament = self.get_object(pk)
-        serializer = self.serializer(departament, data=request.data)
+        obj = self.get_object(pk)
+        serializer = self.serializer(obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request: WSGIRequest, pk: int):
-        departament = self.get_object(pk)
-        departament.delete()
+        obj = self.get_object(pk)
+        obj.delete()
         return Response({"detail": f"OK"})
